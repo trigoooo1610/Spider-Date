@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Spider Initiative</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<div id="background"></div>
+
+<div id="scanlines"></div>
+
+<div id="glitch"></div>
+
+
+
+
+
+<header id="hud">
+
+
+<div>
+SPIDER INITIATIVE
+</div>
+
+
+<div>
+PROTOCOLO 001
+</div>
+
+
+<div>
+
+STATUS:
+
+<span id="status">
+ONLINE
+</span>
+
+</div>
+
+
+</header>
+
+
+
+
+
+
+
+
+<!-- ==========================
+        BOOT
+========================== -->
+
+
+<section id="bootScreen" class="screen active">
+
+
+<div class="interface">
+
+
+<h1>
+SPIDER INITIATIVE
+</h1>
+
+
+<div id="bootMessages">
+
+Inicializando sistema...
+
+</div>
+
+
+
+<div class="progress">
+
+<div id="progressBar"></div>
+
+</div>
+
+
+
+<span id="percentage">
+
+0%
+
+</span>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+        INTRO
+========================== -->
+
+
+<section id="introScreen" class="screen">
+
+
+<div class="interface">
+
+
+<span class="tag">
+
+AGENTE IDENTIFICADO
+
+</span>
+
+
+
+<h2>
+
+Bem-vinda.
+
+</h2>
+
+
+
+<p id="introTyping"></p>
+
+
+
+
+<button id="startButton">
+
+🕷️ INICIAR MISSÃO
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+        MISSÕES
+========================== -->
+
+
+<section id="missionScreen" class="screen">
+
+
+
+
+
+<!-- SPIDER DEVICE -->
+
+
+<div id="spiderDevice">
+
+
+<h3>
+🕷️ SPIDER DEVICE
+</h3>
+
+
+
+
+<div class="deviceLine">
+
+MISSÃO:
+
+<span id="missionNumber">
+01
+</span>
+
+</div>
+
+
+
+
+
+<div class="deviceLine">
+
+DATA:
+
+<span id="missionDate">
+???
+</span>
+
+</div>
+
+
+
+
+
+<div class="deviceLine">
+
+HORÁRIO:
+
+<span id="missionTime">
+???
+</span>
+
+</div>
+
+
+
+
+
+<div class="deviceLine">
+
+LOCAL:
+
+<span id="missionLocation">
+???
+</span>
+
+</div>
+
+
+
+
+
+<div class="deviceLine">
+
+OBJETIVO:
+
+<span id="missionObjective">
+???
+</span>
+
+</div>
+
+
+
+
+
+<hr>
+
+
+
+<div>
+
+DADOS DESBLOQUEADOS:
+
+<span id="dataCount">
+0/4
+</span>
+
+
+</div>
+
+
+
+
+<div id="unlockMessage">
+
+NOVO DADO DESBLOQUEADO ✓
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- PAINEL PRINCIPAL -->
+
+
+<div class="interface">
+
+
+
+<span class="tag" id="missionTag">
+
+PRIMEIRO TESTE
+
+</span>
+
+
+
+
+<h2 id="missionTitle">
+
+Sentido Aranha
+
+</h2>
+
+
+
+
+
+<p id="missionText">
+
+
+O traje detectou uma ameaça.
+
+<br>
+
+Teste seus reflexos.
+
+
+</p>
+
+
+
+<!-- ARQUIVOS MISSÃO 02 -->
+
+
+<div id="filesContainer">
+
+
+<button class="file">
+
+ARQUIVO A
+
+</button>
+
+
+
+<button class="file">
+
+ARQUIVO B
+
+</button>
+
+
+
+<button class="file">
+
+ARQUIVO C
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- LOCALIZAÇÃO MISSÃO 03 -->
+
+
+<div id="locationContainer">
+
+
+<p>
+
+SINAL CRIPTOGRAFADO:
+
+</p>
+
+
+
+<h3 id="encryptedLocation">
+
+P _ L _  S _ O _ P _ I _ G
+
+</h3>
+
+
+
+
+<button class="locationOption">
+
+Polo Shopping
+
+</button>
+
+
+
+<button class="locationOption">
+
+Parque Shopping
+
+</button>
+
+
+
+<button class="locationOption">
+
+Spider Base
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<button id="missionButton">
+
+COMEÇAR TESTE
+
+</button>
+
+
+
+
+</div>
+
+<div id="spiderTarget">
+
+    🕷️
+
+</div>
+
+
+
+
+
+</section>
+
+<!-- ==========================
+        MISSÃO FINAL
+========================== -->
+
+
+<section id="finalScreen" class="screen">
+
+
+<div class="interface">
+
+
+<span class="tag">
+
+PROTOCOLO FINAL
+
+</span>
+
+
+
+<h2>
+
+Missão Concluída
+
+</h2>
+
+
+
+
+<p id="finalText">
+
+
+Todos os dados da missão foram recuperados.
+
+<br><br>
+
+Analisando informações finais...
+
+</p>
+
+
+
+
+
+<div id="missionSummary">
+
+
+<div class="deviceLine">
+
+DATA:
+
+<span>
+01/08 ✓
+</span>
+
+</div>
+
+
+
+<div class="deviceLine">
+
+HORÁRIO:
+
+<span>
+18:30 ✓
+</span>
+
+</div>
+
+
+
+<div class="deviceLine">
+
+LOCAL:
+
+<span>
+Polo Shopping ✓
+</span>
+
+</div>
+
+
+
+<div class="deviceLine">
+
+OBJETIVO:
+
+<span>
+Ver o novo filme do Homem-Aranha ✓
+</span>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<h2 id="acceptQuestion">
+
+
+Agente GI, você aceita participar desta missão?
+
+
+</h2>
+
+
+
+
+
+<button id="acceptMission">
+
+🕷️ ACEITAR MISSÃO
+
+</button>
+
+
+
+
+<button id="denyMission">
+
+🕸️ RECUSAR
+
+</button>
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
