@@ -1,0 +1,1671 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+
+body {
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    font-family: 'Orbitron', sans-serif;
+
+    background: #050505;
+
+    color: white;
+
+}
+
+
+
+/* ==========================
+        FUNDO
+========================== */
+
+
+#background {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(circle at 20% 20%,
+        rgba(255,0,0,.35),
+        transparent 30%),
+
+
+        radial-gradient(circle at 80% 80%,
+        rgba(0,80,255,.35),
+        transparent 35%),
+
+
+        #030303;
+
+
+    z-index: -3;
+
+}
+
+
+
+
+#scanlines {
+
+    position: fixed;
+
+    inset: 0;
+
+
+    background:
+
+        repeating-linear-gradient(
+
+            0deg,
+
+            rgba(255,255,255,.04),
+
+            rgba(255,255,255,.04) 1px,
+
+            transparent 1px,
+
+            transparent 4px
+
+        );
+
+
+    pointer-events:none;
+
+
+    z-index:5;
+
+}
+
+
+
+
+
+#glitch {
+
+    position:fixed;
+
+    inset:0;
+
+
+    opacity:0;
+
+
+    pointer-events:none;
+
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,0,0,.2),
+
+        transparent
+
+    );
+
+
+    z-index:10;
+
+
+}
+
+
+
+
+
+/* ==========================
+        HUD
+========================== */
+
+
+#hud {
+
+
+    position:fixed;
+
+
+    top:20px;
+
+
+    left:50%;
+
+
+    transform:translateX(-50%);
+
+
+
+    width:90%;
+
+
+    max-width:900px;
+
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+
+    padding:15px 25px;
+
+
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+
+    backdrop-filter:blur(10px);
+
+
+
+    border-radius:15px;
+
+
+
+    font-size:.8rem;
+
+
+
+    letter-spacing:2px;
+
+
+
+}
+
+
+
+#status {
+
+    color:#00ff88;
+
+}
+
+
+
+
+
+
+/* ==========================
+        TELAS
+========================== */
+
+
+.screen {
+
+
+    display:none;
+
+
+    height:100vh;
+
+
+    width:100vw;
+
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+
+    padding-top:80px;
+
+
+}
+
+
+
+.screen.active {
+
+    display:flex;
+
+}
+
+
+
+
+
+/* ==========================
+        INTERFACE
+========================== */
+
+
+.interface {
+
+
+    width:90%;
+
+
+    max-width:750px;
+
+
+
+    padding:45px;
+
+
+
+    text-align:center;
+
+
+
+    background:
+
+    rgba(255,255,255,.04);
+
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+
+    backdrop-filter:blur(15px);
+
+
+
+    border-radius:20px;
+
+
+
+    box-shadow:
+
+    0 0 40px rgba(255,0,0,.25);
+
+
+
+}
+
+
+
+h1 {
+
+
+    font-size:3rem;
+
+
+    color:#ff1e1e;
+
+
+    letter-spacing:5px;
+
+
+
+    text-shadow:
+
+    0 0 15px red,
+
+    0 0 40px red;
+
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+
+
+h2 {
+
+    font-size:2rem;
+
+    margin-bottom:25px;
+
+}
+
+
+
+
+
+p {
+
+    line-height:1.8;
+
+    color:#ddd;
+
+}
+
+
+
+
+
+.tag {
+
+
+    display:inline-block;
+
+
+    padding:8px 20px;
+
+
+
+    margin-bottom:25px;
+
+
+
+    border-radius:30px;
+
+
+
+    border:
+
+    1px solid rgba(255,0,0,.6);
+
+
+
+    background:
+
+    rgba(255,0,0,.15);
+
+
+
+    font-size:.8rem;
+
+
+
+    letter-spacing:2px;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================
+        BOOT
+========================== */
+
+
+#bootMessages {
+
+
+    height:30px;
+
+
+    margin-bottom:25px;
+
+
+    color:#ccc;
+
+
+
+    transition:.4s;
+
+
+}
+
+
+
+.message-hide {
+
+    opacity:0;
+
+    transform:translateY(-8px);
+
+}
+
+
+
+.message-show {
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+
+
+
+.progress {
+
+
+    width:100%;
+
+
+    height:18px;
+
+
+
+    overflow:hidden;
+
+
+
+    border-radius:20px;
+
+
+
+    background:
+
+    rgba(255,255,255,.1);
+
+
+}
+
+
+
+
+
+#progressBar {
+
+
+    height:100%;
+
+
+    width:0%;
+
+
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        red,
+
+        orange
+
+    );
+
+
+
+    box-shadow:
+
+    0 0 20px red;
+
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+#percentage {
+
+
+    display:block;
+
+
+    margin-top:15px;
+
+
+    font-size:1.2rem;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================
+        BOTÕES
+========================== */
+
+
+button {
+
+
+    margin-top:35px;
+
+
+    padding:18px 35px;
+
+
+
+    border:none;
+
+
+
+    border-radius:10px;
+
+
+
+    cursor:pointer;
+
+
+
+    font-family:inherit;
+
+
+
+    font-weight:bold;
+
+
+
+    color:white;
+
+
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        #b30000,
+
+        #ff3030
+
+    );
+
+
+
+    box-shadow:
+
+    0 0 20px rgba(255,0,0,.5);
+
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+button:hover {
+
+
+    transform:scale(1.08);
+
+
+
+    box-shadow:
+
+    0 0 40px red;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================
+        SPIDER DEVICE
+========================== */
+
+
+#spiderDevice {
+
+
+    position:absolute;
+
+
+    left:40px;
+
+
+    top:130px;
+
+
+
+    width:260px;
+
+
+
+    padding:25px;
+
+
+
+    background:
+
+    rgba(0,0,0,.65);
+
+
+
+    border:
+
+    1px solid rgba(255,0,0,.6);
+
+
+
+    border-radius:20px;
+
+
+
+    box-shadow:
+
+    0 0 30px rgba(255,0,0,.4);
+
+
+
+    backdrop-filter:blur(15px);
+
+
+
+    animation:
+
+    deviceAppear .8s ease;
+
+
+}
+
+
+
+
+
+#spiderDevice h3 {
+
+
+    text-align:center;
+
+
+    margin-bottom:20px;
+
+
+    color:#ff3030;
+
+
+
+    letter-spacing:2px;
+
+
+}
+
+
+
+
+.deviceLine {
+
+
+    margin:15px 0;
+
+
+    font-size:.8rem;
+
+
+    color:#aaa;
+
+
+}
+
+
+
+
+.deviceLine span {
+
+
+    display:block;
+
+
+    color:white;
+
+
+    margin-top:5px;
+
+
+}
+
+
+
+
+#spiderDevice hr {
+
+
+    border:none;
+
+
+    border-top:1px solid rgba(255,255,255,.2);
+
+
+    margin:20px 0;
+
+
+}
+
+
+
+
+
+#dataCount {
+
+
+    color:#00ff88;
+
+
+}
+
+
+
+
+
+
+
+@keyframes deviceAppear {
+
+
+    from {
+
+        opacity:0;
+
+        transform:translateX(-40px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+
+}
+
+
+
+
+
+
+/* ==========================
+        GLITCH
+========================== */
+
+
+@keyframes glitch {
+
+
+0% {
+
+transform:translate(0);
+
+}
+
+
+20% {
+
+transform:translate(-5px,5px);
+
+}
+
+
+40% {
+
+transform:translate(5px,-5px);
+
+}
+
+
+60% {
+
+transform:translate(-5px);
+
+}
+
+
+100% {
+
+transform:translate(0);
+
+}
+
+
+}
+
+
+
+.glitching {
+
+
+animation:
+
+glitch .2s infinite;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================
+        CELULAR
+========================== */
+
+
+@media(max-width:900px){
+
+
+#spiderDevice {
+
+
+    position:relative;
+
+
+    left:auto;
+
+
+    top:auto;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+}
+
+
+
+@media(max-width:700px){
+
+
+
+#hud {
+
+
+    flex-direction:column;
+
+
+    gap:10px;
+
+
+    font-size:.65rem;
+
+
+}
+
+
+
+
+h1 {
+
+
+    font-size:2rem;
+
+
+}
+
+
+
+
+h2 {
+
+
+    font-size:1.5rem;
+
+
+}
+
+
+
+
+.interface {
+
+
+    padding:25px;
+
+
+}
+
+
+
+}
+
+#spiderTarget {
+
+    display:none;
+
+    position:fixed;
+
+    font-size:4rem;
+
+    cursor:pointer;
+
+    animation: spiderPulse 1s infinite;
+
+    filter:
+    drop-shadow(0 0 20px red);
+
+    z-index:50;
+
+    user-select:none;
+
+}
+
+
+
+@keyframes spiderPulse {
+
+
+    0% {
+
+        transform:scale(1);
+
+    }
+
+
+    50% {
+
+        transform:scale(1.3);
+
+    }
+
+
+    100% {
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================
+   SPIDER DEVICE UPDATE
+========================== */
+
+
+#spiderDevice.updated {
+
+
+    animation:
+
+    deviceUpdate .8s ease;
+
+
+    border-color:#00ff88;
+
+
+    box-shadow:
+
+    0 0 40px #00ff88;
+
+
+}
+
+
+
+@keyframes deviceUpdate {
+
+
+    0% {
+
+        transform:translateX(0);
+
+    }
+
+
+    20% {
+
+        transform:translateX(-8px);
+
+    }
+
+
+    40% {
+
+        transform:translateX(8px);
+
+    }
+
+
+    60% {
+
+        transform:translateX(-5px);
+
+    }
+
+
+    100% {
+
+        transform:translateX(0);
+
+    }
+
+
+}
+
+
+
+
+#unlockMessage {
+
+
+    display:none;
+
+
+    margin-top:20px;
+
+
+    color:#00ff88;
+
+
+    font-size:.8rem;
+
+
+    letter-spacing:2px;
+
+
+    animation:
+
+    pulseMessage 1s infinite;
+
+
+}
+
+
+
+@keyframes pulseMessage {
+
+
+    0% {
+
+        opacity:.4;
+
+    }
+
+
+    50% {
+
+        opacity:1;
+
+    }
+
+
+    100% {
+
+        opacity:.4;
+
+    }
+
+
+}
+
+/* ==========================
+   MISSÃO 02 - ARQUIVOS
+========================== */
+
+
+#filesContainer {
+
+    display:none;
+
+    margin-top:30px;
+
+    gap:15px;
+
+    flex-direction:column;
+
+}
+
+
+
+.file {
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+
+    border:
+
+    1px solid rgba(255,255,255,.2);
+
+
+
+}
+
+
+
+.file:hover {
+
+
+    background:
+
+    rgba(255,0,0,.25);
+
+
+}
+
+
+
+.file.correct {
+
+
+    border-color:#00ff88;
+
+    box-shadow:
+
+    0 0 25px #00ff88;
+
+
+}
+
+/* ==========================
+   MISSÃO 03 - LOCALIZAÇÃO
+========================== */
+
+
+#locationContainer {
+
+    display:none;
+
+    margin-top:30px;
+
+    animation: locationAppear .6s ease;
+
+}
+
+
+
+#encryptedLocation {
+
+
+    margin:25px 0;
+
+
+    color:#ff3030;
+
+
+    letter-spacing:5px;
+
+
+    font-size:1.2rem;
+
+
+    text-shadow:
+
+    0 0 15px red;
+
+
+}
+
+
+
+.locationOption {
+
+
+    display:block;
+
+
+    width:100%;
+
+
+    margin:15px auto;
+
+
+    background:
+
+
+    rgba(255,255,255,.08);
+
+
+
+    border:
+
+
+    1px solid rgba(255,255,255,.2);
+
+
+}
+
+
+
+.locationOption:hover {
+
+
+    background:
+
+
+    rgba(255,0,0,.25);
+
+
+}
+
+
+
+.locationOption.correct {
+
+
+    border-color:#00ff88;
+
+
+    box-shadow:
+
+
+    0 0 30px #00ff88;
+
+
+}
+
+
+
+#locationContainer.scanning {
+
+
+    animation:
+
+    scanning 1s infinite;
+
+
+}
+
+
+
+@keyframes locationAppear {
+
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+
+}
+
+
+
+@keyframes scanning {
+
+
+    0% {
+
+
+        opacity:.5;
+
+    }
+
+
+    50% {
+
+
+        opacity:1;
+
+    }
+
+
+    100% {
+
+
+        opacity:.5;
+
+    }
+
+
+}
+
+/* ==========================
+        MISSÃO FINAL
+========================== */
+
+
+#finalScreen .interface {
+
+
+    animation:
+
+    finalAppear 1s ease;
+
+
+}
+
+
+
+#missionSummary {
+
+
+    margin:30px 0;
+
+
+    padding:20px;
+
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+
+    border:
+
+
+    1px solid rgba(255,255,255,.2);
+
+
+
+    border-radius:15px;
+
+
+
+}
+
+
+
+
+#missionSummary .deviceLine {
+
+
+    text-align:left;
+
+
+}
+
+
+
+#missionSummary span {
+
+
+    color:#00ff88;
+
+
+}
+
+
+
+
+#acceptQuestion {
+
+
+    margin-top:35px;
+
+
+    font-size:1.4rem;
+
+
+    color:white;
+
+
+    text-shadow:
+
+
+    0 0 15px red;
+
+
+}
+
+
+
+
+#acceptMission {
+
+
+    background:
+
+
+    linear-gradient(
+
+        90deg,
+
+        #006b2e,
+
+        #00ff88
+
+    );
+
+
+    box-shadow:
+
+
+    0 0 25px #00ff88;
+
+
+}
+
+
+
+#denyMission {
+
+
+    margin-left:15px;
+
+
+    background:
+
+
+    linear-gradient(
+
+        90deg,
+
+        #333,
+
+        #666
+
+    );
+
+
+}
+
+
+
+
+#denyMission:hover {
+
+
+    transform:none;
+
+
+}
+
+
+
+
+.finalSuccess {
+
+
+    animation:
+
+
+    successPulse 1s infinite;
+
+
+}
+
+
+
+
+@keyframes successPulse {
+
+
+    0% {
+
+
+        box-shadow:
+
+        0 0 20px #00ff88;
+
+
+    }
+
+
+
+    50% {
+
+
+        box-shadow:
+
+        0 0 50px #00ff88;
+
+
+    }
+
+
+
+    100% {
+
+
+        box-shadow:
+
+        0 0 20px #00ff88;
+
+
+    }
+
+
+}
+
+
+
+@keyframes finalAppear {
+
+
+    from {
+
+
+        opacity:0;
+
+
+        transform:
+
+        scale(.9);
+
+
+    }
+
+
+
+    to {
+
+
+        opacity:1;
+
+
+        transform:
+
+        scale(1);
+
+
+    }
+
+
+}
+
+/* ==========================
+        AJUSTE TELA FINAL
+========================== */
+
+
+#finalScreen {
+
+    overflow-y:hidden;
+
+    padding-top:80px;
+
+}
+
+
+
+#finalScreen .interface {
+
+    max-height:85vh;
+
+    overflow-y:auto;
+
+    padding:35px;
+
+}
+
+
+
+#finalText {
+
+    line-height:1.8;
+
+}
+
+
+
+#finalScreen button {
+
+    margin-top:25px;
+
+}
+
+#acceptQuestion,
+#acceptMission,
+#denyMission {
+
+    display:none;
+
+}
+
+#finalScreen {
+
+    align-items:center;
+
+}
+
+
+#missionSummary {
+
+    margin:20px auto;
+
+}
+
+
+#acceptQuestion {
+
+    font-size:1.2rem;
+
+    margin-top:20px;
+
+}
